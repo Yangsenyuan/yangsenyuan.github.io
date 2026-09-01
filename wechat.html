@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WeChat | Yang Dongheng</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://kit.fontawesome.com/a860a211d3.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="assets/css/font_sans_serif.css">
+  <link rel="stylesheet" href="assets/css/theme-luka.css">
+
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+
+  <style>
+    body.theme-luka .wechat-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    body.theme-luka .wechat-card {
+      width: 100%;
+      max-width: 380px;
+      padding: 44px 36px;
+      text-align: center;
+      border: 1px solid var(--luka-border);
+      border-radius: 18px;
+      background: var(--luka-social-bg);
+      box-shadow: 0 6px 28px var(--luka-shadow);
+    }
+
+    body.theme-luka .wechat-card .fa-weixin {
+      font-size: 44px;
+      color: #07c160;
+      margin-bottom: 18px;
+    }
+
+    body.theme-luka .wechat-card h1 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      color: var(--luka-text);
+    }
+
+    body.theme-luka .wechat-card .wechat-hint {
+      margin: 0 0 22px;
+      font-size: 13px;
+      color: var(--luka-secondary);
+    }
+
+    body.theme-luka .wechat-id {
+      margin: 0 0 22px;
+      padding: 12px 16px;
+      font-family: "Ubuntu Mono", "SFMono-Regular", monospace;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: var(--luka-accent);
+      background: var(--luka-bg);
+      border: 1px dashed var(--luka-border);
+      border-radius: 12px;
+      user-select: all;
+    }
+
+    body.theme-luka .wechat-copy {
+      display: inline-block;
+      padding: 10px 26px;
+      border: none;
+      border-radius: 999px;
+      background: var(--luka-accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    body.theme-luka .wechat-copy:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.08);
+    }
+
+    body.theme-luka .wechat-back {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--luka-secondary);
+    }
+  </style>
+</head>
+<body class="theme-luka">
+  <main class="wechat-page">
+    <div class="wechat-card">
+      <i class="fa-brands fa-weixin"></i>
+      <h1>Add me on WeChat</h1>
+      <p class="wechat-hint">微信号 · WeChat ID</p>
+      <p class="wechat-id" id="wechatId">ysyyy0914</p>
+      <button class="wechat-copy" id="copyBtn" onclick="copyWechatId()">复制微信号 Copy</button>
+      <br>
+      <a class="wechat-back" href="./">&larr; Back to homepage</a>
+    </div>
+  </main>
+
+  <script>
+    function copyWechatId() {
+      var text = document.getElementById('wechatId').textContent.trim();
+      var btn = document.getElementById('copyBtn');
+
+      function done() {
+        btn.textContent = '已复制 Copied ✓';
+        setTimeout(function() { btn.textContent = '复制微信号 Copy'; }, 1800);
+      }
+
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fallback);
+      } else {
+        fallback();
+      }
+    }
+  </script>
+</body>
+</html>
