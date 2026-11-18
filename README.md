@@ -1,6 +1,6 @@
 # Yang Dongheng's Homepage
 
-Personal homepage of Yang Dongheng (杨东衡) — AIPM | Make Good New Things | Prompt-less-ism.
+Personal homepage of Yang Dongheng  — AIPM | Make Good New Things | Prompt-less-ism.
 
 **Live:** https://yangsenyuan.github.io/
 
